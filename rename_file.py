@@ -40,6 +40,7 @@ def main():
     arg = parse_arguments()
     source = PureWindowsPath(arg.source) if platform == "win32" else arg.source
     directories = os.listdir(source)
+
     print(f"Directories in path: {directories}")
 
     for dir in directories:
