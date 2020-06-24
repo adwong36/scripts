@@ -37,7 +37,7 @@ def search_file_type(directory: str, file_type: str = 'mkv') -> list:
 def main():
     """main"""
     arg = parse_arguments()
-    directories = os.listdir(repr(arg.source)) if platform == 'win32' else os.listdir(arg.source)
+    directories = os.listdir(r'{}'.format(arg.source)) if platform == 'win32' else os.listdir(arg.source)
 
     print(f"Directories in path: {directories}")
 
