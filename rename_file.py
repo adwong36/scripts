@@ -10,6 +10,8 @@ python rename_file.py -h
 import argparse
 import glob
 import os
+from pathlib import PureWindowsPath
+from sys import platform
 
 PATH = os.getcwd()
 print(f"Renaming directory in {PATH}")
@@ -36,7 +38,9 @@ def search_file_type(directory: str, file_type: str = 'mkv') -> list:
 def main():
     """main"""
     arg = parse_arguments()
-    directories = os.listdir(os.path.join(arg.source))
+    source = PureWindowsPath(arg.source) if platform == "win32" else arg.source
+    directories = os.listdir(source)
+
     print(f"Directories in path: {directories}")
 
     for dir in directories:
