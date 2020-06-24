@@ -18,7 +18,7 @@ PARSER = argparse.ArgumentParser(description='Process user input')
 
 def parse_arguments():
     """Parsing arguments from input"""
-    PARSER.add_argument('source', nargs='?', default=os.path.join(PATH), type=str, help='source path to rename file')
+    PARSER.add_argument('source', nargs='?', default=PATH, type=str, help='source path to rename file')
     PARSER.add_argument('-t', default='mkv', dest='file_type', type=str,
                         help='Specify file extension type, default: mkv')
     return PARSER.parse_args()
@@ -36,7 +36,7 @@ def search_file_type(directory: str, file_type: str = 'mkv') -> list:
 def main():
     """main"""
     arg = parse_arguments()
-    directories = os.listdir(arg.source)
+    directories = os.listdir(os.path.join(arg.source))
     print(f"Directories in path: {directories}")
 
     for dir in directories:
