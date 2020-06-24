@@ -18,7 +18,7 @@ PARSER = argparse.ArgumentParser(description='Process user input')
 
 def parse_arguments():
     """Parsing arguments from input"""
-    PARSER.add_argument('source', nargs='?', default=PATH, type=str, help='source path to rename file')
+    PARSER.add_argument('source', nargs='?', default=os.path.join(PATH), type=str, help='source path to rename file')
     PARSER.add_argument('-t', default='mkv', dest='file_type', type=str,
                         help='Specify file extension type, default: mkv')
     return PARSER.parse_args()
