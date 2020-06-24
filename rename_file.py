@@ -29,7 +29,8 @@ def main():
             for file in mkv_files:
                 print(f"Renaming file in directory: {dir}")
                 os.rename(f"{file}", f"{dir}{counter}.mkv")
-                counter += 1
+                if isinstance(counter, int):
+                    counter += 1
 
 
 if __name__ == '__main__':
