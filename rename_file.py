@@ -36,7 +36,7 @@ def search_file_type(directory: str, file_type: str = 'mkv') -> list:
 def main():
     """main"""
     arg = parse_arguments()
-    directories = os.listdir(arg.source)
+    directories = os.listdir(os.path.join(arg.source))
     print(f"Directories in path: {directories}")
 
     for dir in directories:
