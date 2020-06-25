@@ -33,11 +33,16 @@ def search_file_type(directory: str, file_type: str = 'mkv') -> list:
     print(f"File found: {found}")
     return found
 
+def validate_path(path: str):
+    """Convert to windows compatilible path"""
+    if os.platform == 'win32':
+        return path.replace('\\', '/')
+    return path
 
 def main():
     """main"""
     arg = parse_arguments()
-    directories = os.listdir(r'{}'.format(arg.source)) if platform == 'win32' else os.listdir(arg.source)
+    directories = os.listdir(validate_path(arg.source))
 
     print(f"Directories in path: {directories}")
 
