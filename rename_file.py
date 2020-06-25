@@ -35,6 +35,7 @@ def search_file_type(directory: str, file_type: str = 'mkv') -> list:
     print(f"File found: {found}")
     return found
 
+
 def validate_path(path: str):
     """Convert to windows compatilible path
 
@@ -45,7 +46,8 @@ def validate_path(path: str):
         return path.replace('\\', '/')
     return path
 
-def ignore_extensions(dir: str):
+
+def ignored_extensions(dir: str):
     """Ignored entensions
 
     :param dir: directory of file
