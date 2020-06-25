@@ -47,7 +47,7 @@ def main():
 
             counter = 0 if len(file_found) > 1 else ""
             for file in file_found:
-                print(f"Renaming {arg.file_type} file in directory: {dir}")
+                print(f"Renaming {arg.file_type} file in directory: {file}")
                 os.rename(f"{file}", f"{dir}{counter}.{arg.file_type}")
                 if isinstance(counter, int):
                     counter += 1
