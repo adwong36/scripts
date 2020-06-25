@@ -12,6 +12,8 @@ import glob
 import os
 from sys import platform
 
+IGNORED_EXT = ['.py', '.txt', '.mkv']
+
 PATH = os.getcwd()
 print(f"Renaming directory in {PATH}")
 PARSER = argparse.ArgumentParser(description='Process user input')
@@ -34,10 +36,25 @@ def search_file_type(directory: str, file_type: str = 'mkv') -> list:
     return found
 
 def validate_path(path: str):
-    """Convert to windows compatilible path"""
-    if os.platform == 'win32':
+    """Convert to windows compatilible path
+
+    :param path: directory path
+    :return: windows compatible backslashes path
+    """
+    if platform == 'win32':
         return path.replace('\\', '/')
     return path
+
+def ignore_extensions(dir: str):
+    """Ignored entensions
+
+    :param dir: directory of file
+    """
+    for types in IGNORED_EXT:
+        if dir.endswith(types):
+            return True
+    return False
+
 
 def main():
     """main"""
@@ -47,7 +64,7 @@ def main():
     print(f"Directories in path: {directories}")
 
     for dir in directories:
-        if os.path.isdir(dir) and not dir.startswith('.') and not dir.endswith('.py'):
+        if os.path.isdir(dir) and not dir.startswith('.') and not ignored_extensions(dir):
             file_found = search_file_type(dir, arg.file_type)
 
             counter = 0 if len(file_found) > 1 else ""
