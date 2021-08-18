@@ -10,7 +10,7 @@ if [ -f "$config" ]; then
     cp ./zshrc-sample ~/.zshrc
 fi
 
-install zsh addon
+# install zsh addon
 git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
 
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
